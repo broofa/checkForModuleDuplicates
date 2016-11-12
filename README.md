@@ -36,7 +36,7 @@ For example, I created this module because I wasted 3 hours tracking down a bug
 where Sequelize was failing to generate UUIDs.  The cause?  The
 Sequelize.UUIDV4 constant I was passing in to Sequelize came from a different
 instance of the Sequelize module and, thus, wasn't actually recognized as
-`Sequelize.UUIDV4.  The fix was to change `require('Sequelize')` to
+`Sequelize.UUIDV4`.  The fix was to change `require('Sequelize')` to
 `require('sequelize')`. Everything else worked, however... there was no
 indication given that I had inadvertently created a completely different
 instance of the module.
