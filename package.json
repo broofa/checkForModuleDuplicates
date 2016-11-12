@@ -1,6 +1,6 @@
 {
   "name": "checkForModuleDuplicates",
-  "description": "Complain loudly if a module is require()'ed using different uppercase .vs. lowercase naming",
+  "description": "Complain loudly if a module is require()'ed using inconsistent uppercase/lowercase naming",
   "version": "1.0.0",
   "author": "Robert Kieffer <robert@broofa.com>",
   "license": "MIT",
