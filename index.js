@@ -22,7 +22,7 @@ function autocheck() {
   checkForModuleDuplicates();
 
   autoDelay = Math.min(60000, autoDelay * 2)
-  setTimeout(autocheck, autodelay)
+  setTimeout(autocheck, autoDelay)
 }
 
 checkForModuleDuplicates.autocheck = autocheck;
