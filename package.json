@@ -1,13 +1,13 @@
 {
   "name": "checkForModuleDuplicates",
-  "description": "Complain loudly if a module is require()'ed using inconsistent uppercase/lowercase naming",
-  "version": "1.0.1",
+  "description": "Detect possible duplicate module require() issues",
+  "version": "2.0.0",
   "author": "Robert Kieffer <robert@broofa.com>",
   "license": "MIT",
   "repository": "broofa/checkForDuplicateModules",
   "keywords": [
-    "module caching",
-    "require() case sensitivity"
+    "node module loading",
+    "node require() case sensitive"
   ],
   "main": "index.js"
 }
