@@ -16,7 +16,6 @@ class ModulePathError extends Error {
   }
 }
 
-let onError;
 const seenPaths = {};
 const seenNames = {};
 
@@ -24,7 +23,7 @@ function checkModule(module) {
   const path = module.id;
   const pathLower = path.toLowerCase();
   if (pathLower in seenPaths) {
-    onError(new ModuleCaseError(path, seenPaths[pathLower]));
+    global._cfdCallback(new ModuleCaseError(path, seenPaths[pathLower]));
     seenPaths[pathLower].push(path);
   } else {
     seenPaths[pathLower] = [path];
@@ -36,7 +35,7 @@ function checkModule(module) {
     const name = RegExp.$2;
     const nameLower = name.toLowerCase();
     if (nameLower in seenNames && seenNames[nameLower].indexOf(dirLower) < 0) {
-      onError(new ModulePathError(dir, seenNames[nameLower]));
+      global._cfdCallback(new ModulePathError(dir, seenNames[nameLower]));
       seenNames[nameLower].push(dirLower);
     } else {
       seenNames[nameLower] = [dirLower];
@@ -46,8 +45,8 @@ function checkModule(module) {
 
 exports = module.exports = function(errorHandler) {
   assert(errorHandler, 'checkForDuplicates error handler must be defined');
-  assert(!onError, 'checkForDuplicates can only be initialized once');
-  onError = errorHandler;
+  assert(!global._cfdCallback, 'checkForDuplicates can only be initialized once');
+  global._cfdCallback = errorHandler;
 
   // Check each module that's already been loaded
   const Module = module.constructor;
